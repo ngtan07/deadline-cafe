@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* --- CSS VARIABLES cho Bảng màu Coffee-inspired & Minimalist 2024-2026 --- */
+:root {
+  /* Coffee / Earthy Tones */
+  --bg-primary: #FDFBFA; /* Trắng ngà ấm áp */
+  --bg-secondary: #F4EFEB; /* Màu be sáng */
+  --text-main: #3C2A21; /* Nâu cà phê đậm */
+  --text-muted: #8A7365;
+  --accent-color: #D5B4A1; /* Cà phê sữa nhẹ */
+  --accent-hover: #C29A84;
+  
+  --primary-btn: #4B382A; /* Nâu đậm sang trọng */
+  --primary-btn-hover: #3C2A21;
+
+  /* Modern UI Variables */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Hiệu ứng Soft Shadow đặc trưng UI trend 2024-2026 (Neo-Brutalism lai Glassmorphism) hoặc chỉ Soft Minimal */
+  --shadow-soft: 0 10px 30px rgba(60, 42, 33, 0.05);
+  --shadow-hover: 0 20px 40px rgba(60, 42, 33, 0.1);
+  --glass-bg: rgba(253, 251, 250, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- COMPONENTS & UTILITIES --- */
+
+/* Hiện tượng bóng mờ & viền cong (Soft Shadow & Curve) */
+.modern-card {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Card Hover Effect: Nổi lên và bóng to hơn */
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Glassmorphism search bar / Navbar */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+}
+
+/* Badge (Pill-shaped) */
+.modern-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background-color: var(--bg-secondary);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  transition: 0.2s ease;
+}
+
+.modern-badge:hover {
+  background-color: var(--accent-color);
+  color: #FFF;
+}
+
+/* Bubble-style reviews */
+.bubble-review {
+  background: #FFF;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border-top-left-radius: 4px; /* Tông Bubble message */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  margin-bottom: 16px;
+}
+
+/* Nút bấm (Button) thiết kế tối giản, bo tròn lớn */
+.btn-primary-modern {
+  background-color: var(--primary-btn);
+  color: #FFF;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-primary-modern:hover {
+  background-color: var(--primary-btn-hover);
+  transform: scale(1.02);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5B4A1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C29A84;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
