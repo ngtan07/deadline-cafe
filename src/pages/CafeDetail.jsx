@@ -10,6 +10,7 @@ const CafeDetail = () => {
   const { id } = useParams();
   const { data: cafe, loading: cafeLoading, error: cafeError } = useFetch(`http://localhost:3000/cafes/${id}`);
   const { data: initialReviews, loading: reviewsLoading } = useFetch(`http://localhost:3000/reviews?cafeId=${id}&_expand=user`);
+  const { data: locations } = useFetch('http://localhost:3000/locations');
   
   const [reviews, setReviews] = useState([]);
   const displayedReviews = reviews.slice(0, 3);
@@ -46,6 +47,12 @@ const CafeDetail = () => {
 
   if (cafeLoading || reviewsLoading) return <Container className="py-5 text-center">Đang tải chi tiết...</Container>;
   if (cafeError || !cafe) return <Container className="py-5 text-center text-danger">Lỗi khi tải dữ liệu quán.</Container>;
+
+  const locationName = locations?.find(loc => loc.id === cafe.locationId)?.name || 'Không xác định';
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  };
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
@@ -143,7 +150,7 @@ const CafeDetail = () => {
               </div>
               <div>
                 <p className="text-muted small mb-0 fw-semibold text-uppercase">Địa chỉ</p>
-                <p className="mb-0 fw-medium">{cafe.address}</p>
+                <p className="mb-0 fw-medium">{locationName} — {cafe.address}</p>
               </div>
             </div>
 
@@ -163,7 +170,7 @@ const CafeDetail = () => {
               </div>
               <div>
                 <p className="text-muted small mb-0 fw-semibold text-uppercase">Mức giá</p>
-                <p className="mb-0 fw-medium">{cafe.priceRange}</p>
+                <p className="mb-0 fw-medium">{formatPrice(cafe.priceRange.min)} - {formatPrice(cafe.priceRange.max)}</p>
               </div>
             </div>
           </motion.div>

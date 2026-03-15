@@ -19,7 +19,8 @@ const getIcon = (amenity) => {
 };
 
 const Explore = () => {
-  const { data: cafes, loading, error } = useFetch('http://localhost:3000/cafes');
+  const { data: cafes, loading: cafesLoading, error: cafesError } = useFetch('http://localhost:3000/cafes');
+  const { data: locations, loading: locationsLoading, error: locationsError } = useFetch('http://localhost:3000/locations');
   const [searchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
   
@@ -67,16 +68,17 @@ const Explore = () => {
     // Search filter
     if (search) {
       const s = search.toLowerCase();
-      result = result.filter(c => 
-        c.name.toLowerCase().includes(s) || 
-        c.district.toLowerCase().includes(s) ||
-        c.address.toLowerCase().includes(s)
-      );
+      result = result.filter(c => {
+        const locName = locations?.find(l => l.id === c.locationId)?.name || '';
+        return c.name.toLowerCase().includes(s) || 
+               locName.toLowerCase().includes(s) ||
+               c.address.toLowerCase().includes(s);
+      });
     }
     
-    // District filter
+    // District (Location) filter
     if (filterDistrict !== 'All') {
-      result = result.filter(c => c.district === filterDistrict);
+      result = result.filter(c => c.locationId === filterDistrict);
     }
     
     // Amenities filter
@@ -88,12 +90,11 @@ const Explore = () => {
 
     // Price filter
     if (filterPrice !== 'All') {
-      // Basic mock parsing due to "30k - 65k" format
       result = result.filter(c => {
-        // Simple heuristic for demo based on common ranges
-        if (filterPrice === 'Under50k') return c.priceRange.includes('30k') || c.priceRange.includes('40k');
-        if (filterPrice === '50k-100k') return c.priceRange.includes('50k') || c.priceRange.includes('60k');
-        if (filterPrice === 'Over100k') return c.priceRange.includes('100k') || c.priceRange.includes('120k');
+        const avgPrice = (c.priceRange.min + c.priceRange.max) / 2;
+        if (filterPrice === 'Under50k') return avgPrice < 50000;
+        if (filterPrice === '50k-100k') return avgPrice >= 50000 && avgPrice <= 100000;
+        if (filterPrice === 'Over100k') return avgPrice > 100000;
         return true;
       });
     }
@@ -111,10 +112,22 @@ const Explore = () => {
     }
 
     return result;
-  }, [cafes, search, filterDistrict, filterAmenities, filterPrice, showOnlyFavorites, sortBy, favorites]);
+  }, [cafes, locations, search, filterDistrict, filterAmenities, filterPrice, showOnlyFavorites, sortBy, favorites]);
 
-  const districts = ['All', 'Quận 1', 'Quận 3', 'Quận 5', 'Quận 7'];
+  // Make sure locations is loaded before mapping
+  const activeLocations = locations || [];
   const allAmenities = ['Wifi 5G', 'Quiet Zone', 'Power Plugs', 'Air Con', 'Specialty Coffee', 'Garden', 'Parking', 'Group Tables', 'Lake View'];
+  const isLoading = cafesLoading || locationsLoading;
+  const errorMsg = cafesError || locationsError;
+
+  // Helper function to get location name from ID
+  const getLocationName = (locationId) => {
+    return locations?.find(loc => loc.id === locationId)?.name || 'Không xác định';
+  };
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  };
 
   return (
     <Container className="py-5">
@@ -142,15 +155,24 @@ const Explore = () => {
             <Form.Group className="mb-4">
               <Form.Label className="text-muted fw-semibold small text-uppercase">Khu vực</Form.Label>
               <div className="d-flex flex-column gap-2">
-                {districts.map(d => (
+                <Form.Check 
+                  type="radio"
+                  id={`district-all`}
+                  label="Tất cả khu vực"
+                  name="districtFilter"
+                  checked={filterDistrict === 'All'}
+                  onChange={() => setFilterDistrict('All')}
+                  className="cursor-pointer"
+                />
+                {activeLocations.map(loc => (
                   <Form.Check 
-                    key={d}
+                    key={loc.id}
                     type="radio"
-                    id={`district-${d}`}
-                    label={d === 'All' ? 'Tất cả khu vực' : d}
+                    id={`district-${loc.id}`}
+                    label={loc.name}
                     name="districtFilter"
-                    checked={filterDistrict === d}
-                    onChange={() => setFilterDistrict(d)}
+                    checked={filterDistrict === loc.id}
+                    onChange={() => setFilterDistrict(loc.id)}
                     className="cursor-pointer"
                   />
                 ))}
@@ -216,9 +238,9 @@ const Explore = () => {
 
         {/* Gallery - Right */}
         <Col lg={9}>
-          {loading && <div>Đang tải dữ liệu...</div>}
-          {error && <div className="text-danger">{error}</div>}
-          {!loading && !error && processedCafes.length === 0 && (
+          {isLoading && <div>Đang tải dữ liệu...</div>}
+          {errorMsg && <div className="text-danger">{errorMsg}</div>}
+          {!isLoading && !errorMsg && processedCafes.length === 0 && (
             <div className="text-center text-muted py-5">
               <Coffee size={48} className="mb-3 opacity-50" />
               <h5>Không tìm thấy quán cà phê nào phù hợp.</h5>
@@ -270,9 +292,12 @@ const Explore = () => {
                       
                       <div className="p-4 d-flex flex-column flex-grow-1">
                         <h5 className="fw-bold mb-2 text-truncate" title={cafe.name}>{cafe.name}</h5>
-                        <p className="text-muted small d-flex align-items-center gap-1 mb-3 text-truncate">
+                        <p className="text-muted small d-flex align-items-center gap-1 mb-2 text-truncate">
                           <MapPin size={14} />
-                          {cafe.address}
+                          {getLocationName(cafe.locationId)} — {cafe.address}
+                        </p>
+                        <p className="fw-semibold text-primary mb-3 small d-flex align-items-center gap-1">
+                          {formatPrice(cafe.priceRange.min)} - {formatPrice(cafe.priceRange.max)}
                         </p>
                         
                         <div className="d-flex flex-wrap gap-2 mt-auto">

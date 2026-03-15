@@ -2,25 +2,45 @@
   "users": [
     {
       "id": "1",
-      "name": "Nguyen Van A",
-      "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-      "email": "vana@example.com"
+      "name": "AnNTHE194481",
+      "avatar": "https://i.pravatar.cc/150?u=1",
+      "email": "an@fpt.edu.vn",
+      "role": "user"
     },
     {
       "id": "2",
-      "name": "Tran Thi B",
-      "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-      "email": "thib@example.com"
+      "name": "Admin Dehofee",
+      "avatar": "https://i.pravatar.cc/150?u=admin",
+      "email": "admin@dehofee.com",
+      "role": "admin"
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc1",
+      "name": "Thạch Hòa"
+    },
+    {
+      "id": "loc2",
+      "name": "Tân Xã"
+    },
+    {
+      "id": "loc3",
+      "name": "Bình Yên"
+    },
+    {
+      "id": "loc4",
+      "name": "Ngõ Đồng Mô"
     }
   ],
   "cafes": [
     {
       "id": "1",
-      "name": "The Coffee House - Signature",
-      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1447&q=80",
-      "description": "Một không gian yên tĩnh tuyệt đối dành cho sinh viên chạy deadline với cà phê đặc sản.",
-      "address": "123 Nguyễn Văn Cừ, Quận 5",
-      "district": "Quận 5",
+      "name": "Dehofee Station - Tân Xã",
+      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+      "description": "Không gian view hồ Tân Xã cực chill, chuyên trị deadline xuyên màn đêm.",
+      "locationId": "loc2",
+      "address": "Đường ven hồ Tân Xã, Thạch Thất",
       "rating": 4.8,
       "amenities": [
         "Wifi 5G",
@@ -28,49 +48,38 @@
         "Power Plugs",
         "Air Con"
       ],
-      "priceRange": "50k - 100k",
+      "priceRange": {
+        "min": 25000,
+        "max": 55000
+      },
       "openHours": "07:00 - 23:00"
     },
     {
       "id": "2",
-      "name": "Katinat Saigon Kafe",
-      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1447&q=80",
-      "description": "Với thiết kế hiện đại, nhiều không gian mở, cực chill cho việc học nhóm.",
-      "address": "456 Lê Lợi, Quận 1",
-      "district": "Quận 1",
+      "name": "Cóc Cafe - Hola",
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
+      "description": "Quán tủ của thần dân FPTU, bàn ghế rộng rãi phù hợp học nhóm.",
+      "locationId": "loc1",
+      "address": "Ngã tư Thạch Hòa, Thạch Thất",
       "rating": 4.5,
       "amenities": [
-        "Wifi 5G",
         "Group Tables",
         "Air Con",
         "Parking"
       ],
-      "priceRange": "40k - 80k",
+      "priceRange": {
+        "min": 20000,
+        "max": 45000
+      },
       "openHours": "24/7"
     },
     {
       "id": "3",
-      "name": "Highlands Coffee - Hồ Bán Nguyệt",
-      "image": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1447&q=80",
-      "description": "View hồ cực đẹp, không gian thoáng đãng để thư giãn sau những giờ chạy deadline căng thẳng.",
-      "address": "789 Tôn Dật Tiên, Quận 7",
-      "district": "Quận 7",
-      "rating": 4.2,
-      "amenities": [
-        "Lake View",
-        "Power Plugs",
-        "Air Con"
-      ],
-      "priceRange": "30k - 65k",
-      "openHours": "07:00 - 22:00"
-    },
-    {
-      "id": "4",
-      "name": "Lekima Cafe",
-      "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1447&q=80",
-      "description": "Cà phê ẩn mình trong hẻm nhỏ, tone màu gỗ và cây xanh siêu mát mắt.",
-      "address": "15 Hẻm 2, Quận 3",
-      "district": "Quận 3",
+      "name": "Lekima Hola Garden",
+      "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80",
+      "description": "Cà phê ẩn mình trong hẻm nhỏ với nhiều cây xanh, siêu mát mắt và yên tĩnh.",
+      "locationId": "loc4",
+      "address": "Ngõ Đồng Mô, Sơn Tây",
       "rating": 4.9,
       "amenities": [
         "Quiet Zone",
@@ -78,8 +87,30 @@
         "Power Plugs",
         "Specialty Coffee"
       ],
-      "priceRange": "60k - 120k",
+      "priceRange": {
+        "min": 35000,
+        "max": 65000
+      },
       "openHours": "08:00 - 22:00"
+    },
+    {
+      "id": "4",
+      "name": "Highlands Coffee - FPTU",
+      "image": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80",
+      "description": "View hồ cực đẹp ngay trong khuôn viên trường, thuận tiện nghỉ ngơi giữa giờ học.",
+      "locationId": "loc1",
+      "address": "Khu Công nghệ cao Hòa Lạc, Thạch Thất",
+      "rating": 4.2,
+      "amenities": [
+        "Lake View",
+        "Power Plugs",
+        "Air Con"
+      ],
+      "priceRange": {
+        "min": 30000,
+        "max": 65000
+      },
+      "openHours": "07:00 - 22:00"
     }
   ],
   "reviews": [
@@ -88,65 +119,15 @@
       "cafeId": "1",
       "userId": "1",
       "rating": 5,
-      "comment": "Quán rất yên tĩnh, mạng mạnh, chỗ ngồi thoải mái để code cả ngày không chán.",
-      "date": "2024-03-12"
-    },
-    {
-      "id": "2",
-      "cafeId": "1",
-      "userId": "2",
-      "rating": 4,
-      "comment": "Đồ uống hơi đắt nhưng chất lượng phục vụ tốt.",
-      "date": "2024-03-10"
-    },
-    {
-      "id": "3",
-      "cafeId": "2",
-      "userId": "1",
-      "rating": 4,
-      "comment": "Hơi ồn vào buổi tối, ban ngày ngồi làm việc ổn.",
-      "date": "2024-02-28"
-    },
-    {
-      "id": "ab2a",
-      "cafeId": "1",
-      "userId": "1",
-      "rating": 5,
-      "comment": "nice",
-      "date": "2026-03-13"
-    },
-    {
-      "id": "0787",
-      "cafeId": "2",
-      "userId": "1",
-      "rating": 3,
-      "comment": "ahuhuhu",
-      "date": "2026-03-13"
-    },
-    {
-      "id": "26a1",
-      "cafeId": "2",
-      "userId": "1",
-      "rating": 5,
-      "comment": "alelele",
-      "date": "2026-03-13"
-    },
-    {
-      "id": "d507",
-      "cafeId": "2",
-      "userId": "1",
-      "rating": 5,
-      "comment": "ahoho",
-      "date": "2026-03-13"
-    },
-    {
-      "id": "3683",
-      "cafeId": "2",
-      "userId": "1",
-      "rating": 5,
-      "comment": "alelelele",
-      "date": "2026-03-13"
+      "comment": "Mạng ở đây mạnh kinh khủng, kéo code vèo vèo!",
+      "date": "2026-03-13T10:30:00Z"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "favorites": [
+    {
+      "id": "fav1",
+      "userId": "1",
+      "cafeId": "1"
+    }
+  ]
 }
