@@ -1,17 +1,45 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "AnNTHE194481",
-      "avatar": "https://i.pravatar.cc/150?u=1",
-      "email": "an@fpt.edu.vn",
+      "id": "user1",
+      "name": "Jane Nguyen",
+      "avatar": "https://i.pravatar.cc/150?u=jane",
+      "email": "jane.nguyen@example.com",
       "role": "user"
     },
     {
-      "id": "2",
-      "name": "Admin Dehofee",
-      "avatar": "https://i.pravatar.cc/150?u=admin",
+      "id": "user2",
+      "name": "Mike Duong",
+      "avatar": "https://i.pravatar.cc/150?u=mike",
+      "email": "mike.duong@fpt.edu.vn",
+      "role": "user"
+    },
+    {
+      "id": "admin1",
+      "name": "Super Admin",
+      "avatar": "https://i.pravatar.cc/150?u=admin_super",
       "email": "admin@dehofee.com",
+      "role": "admin"
+    },
+    {
+      "id": "user3",
+      "name": "Alex Tran",
+      "avatar": "https://i.pravatar.cc/150?u=alex",
+      "email": "alextran.dev@gmail.com",
+      "role": "user"
+    },
+    {
+      "id": "user4",
+      "name": "Thao Le",
+      "avatar": "https://i.pravatar.cc/150?u=thao",
+      "email": "thaole1999@yahoo.com",
+      "role": "user"
+    },
+    {
+      "id": "admin2",
+      "name": "System Moderator",
+      "avatar": "https://i.pravatar.cc/150?u=mod123",
+      "email": "mod@dehofee.com",
       "role": "admin"
     }
   ],
@@ -111,13 +139,33 @@
         "max": 65000
       },
       "openHours": "07:00 - 22:00"
+    },
+    {
+      "id": "d629",
+      "name": "Thanh An Nguyễn",
+      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+      "locationId": "loc2",
+      "address": "asdf update",
+      "rating": 5,
+      "openHours": "07:00 - 23:00",
+      "description": "",
+      "amenities": [
+        "Wifi 5G",
+        "Quiet Zone",
+        "Power Plugs",
+        "Air Con"
+      ],
+      "priceRange": {
+        "min": 20000,
+        "max": 40000
+      }
     }
   ],
   "reviews": [
     {
       "id": "1",
       "cafeId": "1",
-      "userId": "1",
+      "userId": null,
       "rating": 5,
       "comment": "Mạng ở đây mạnh kinh khủng, kéo code vèo vèo!",
       "date": "2026-03-13T10:30:00Z"
@@ -126,8 +174,9 @@
   "favorites": [
     {
       "id": "fav1",
-      "userId": "1",
+      "userId": null,
       "cafeId": "1"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
