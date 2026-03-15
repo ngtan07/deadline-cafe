@@ -41,7 +41,7 @@ const Home = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Tìm Kiếm Không Gian <br/>
+          Dehofee - Tìm Kiếm Không Gian <br/>
           <span style={{ color: 'var(--accent-color)' }}>Chạy Deadline Hoàn Hảo</span>
         </motion.h1>
         
@@ -73,7 +73,7 @@ const Home = () => {
             <input 
               type="text" 
               className="form-control bg-transparent border-0 text-white px-5 py-3 shadow-none focus-ring-0" 
-              placeholder="Nhập tên quán, khu vực (VD: Quận 1)..."
+              placeholder="Nhập tên quán, khu vực (VD: Thạch Hòa, Tân Xã)..."
               style={{ '::placeholder': { color: 'rgba(255,255,255,0.7)' } }}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

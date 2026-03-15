@@ -51,7 +51,7 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           <Coffee size={28} color="var(--primary-btn)" />
-          DeadlineCafe
+          Dehofee
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0 shadow-none" />
         <Navbar.Collapse id="basic-navbar-nav">
