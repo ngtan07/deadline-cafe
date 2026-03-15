@@ -169,6 +169,14 @@
       "rating": 5,
       "comment": "Mạng ở đây mạnh kinh khủng, kéo code vèo vèo!",
       "date": "2026-03-13T10:30:00Z"
+    },
+    {
+      "id": "2a36",
+      "cafeId": "2",
+      "userId": "user1",
+      "rating": 5,
+      "comment": "tuyet",
+      "date": "2026-03-15"
     }
   ],
   "favorites": [

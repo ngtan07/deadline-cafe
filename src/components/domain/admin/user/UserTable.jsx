@@ -7,7 +7,6 @@ const ITEMS_PER_PAGE = 5;
 const UserTable = ({ usersList, onEdit, onDelete }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Safely calculate pages and slice
   const usersLength = usersList?.length || 0;
   const totalPages = Math.ceil(usersLength / ITEMS_PER_PAGE);
   const paginated = (usersList || []).slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { useAdminDashboardData } from '../../hooks/admin/useAdminDashboardData';
 import { useCafeManagement } from '../../hooks/admin/useCafeManagement';
-import { useCafeFilter } from '../../hooks/admin/useCafeFilter';
+import { useCafeFilter } from '../../hooks/useCafeFilter';
 
 import CafeTable from '../../components/domain/admin/cafe/CafeTable';
 import CafeFormModal from '../../components/domain/admin/cafe/CafeFormModal';
