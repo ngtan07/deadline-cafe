@@ -1,7 +1,8 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import { Coffee, User } from 'lucide-react';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Coffee, User, LogOut } from 'lucide-react';
 import styled from 'styled-components';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const StyledNavbar = styled(Navbar)`
   background: var(--glass-bg);
@@ -46,6 +47,14 @@ const StyledNavbar = styled(Navbar)`
 `;
 
 const NavBar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <StyledNavbar expand="lg" sticky="top" className="py-3">
       <Container>
@@ -60,10 +69,31 @@ const NavBar = () => {
             <Nav.Link as={NavLink} to="/explore">Explore</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={NavLink} to="/login" className="d-flex align-items-center gap-2">
-              <User size={20} />
-              Login
-            </Nav.Link>
+            {user ? (
+              <div className="d-flex align-items-center gap-4">
+                <span className="d-flex align-items-center gap-2 fw-medium">
+                  <User size={20} className="text-muted" />
+                  {user.name}
+                </span>
+                {user.role === 'admin' && (
+                  <Nav.Link as={NavLink} to="/admin" className="text-primary p-0">
+                    Trang quản trị
+                  </Nav.Link>
+                )}
+                <div 
+                  onClick={handleLogout} 
+                  className="text-danger d-flex align-items-center gap-2" 
+                  style={{ cursor: 'pointer', fontWeight: '500' }}
+                >
+                  <LogOut size={16} /> Logout
+                </div>
+              </div>
+            ) : (
+              <Nav.Link as={NavLink} to="/login" className="d-flex align-items-center gap-2">
+                <User size={20} />
+                Login
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
