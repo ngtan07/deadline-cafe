@@ -2,11 +2,14 @@ import { Coffee } from "lucide-react"
 import { Col, Form, Row } from "react-bootstrap"
 import { motion } from 'framer-motion';
 import CafeCard from './CafeCard'
+import { useAuth } from "../../../../contexts/AuthContext";
 
 const CafeList = ({ favoritesFilter, setFavoritesFilter, isLoading, errorMsg, filteredCafes,
     toggleFavorite, favoritesList, locations, getIcon
 }) => {
 
+    const { user } = useAuth();
+    
     const getLocationName = (locationId) =>
         locations?.find((loc) => loc.id === locationId)?.name || 'Unknown';
 
@@ -16,15 +19,17 @@ const CafeList = ({ favoritesFilter, setFavoritesFilter, isLoading, errorMsg, fi
         <Col lg={9}>
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <div />
-                <Form.Check
-                    type="switch"
-                    className="custom-switch-md"
-                    id="favorite-switch"
-                    label="Show favorite cafes"
-                    checked={favoritesFilter}
-                    onChange={(e) => setFavoritesFilter(e.target.checked)}
-                    style={{ fontWeight: '500' }}
-                />
+                {user && (
+                    <Form.Check
+                        type="switch"
+                        className="custom-switch-md"
+                        id="favorite-switch"
+                        label="Show favorite cafes"
+                        checked={favoritesFilter}
+                        onChange={(e) => setFavoritesFilter(e.target.checked)}
+                        style={{ fontWeight: '500' }}
+                    />
+                )}
             </div>
 
             {isLoading && <div>Loading data...</div>}

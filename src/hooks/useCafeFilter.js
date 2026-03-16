@@ -1,33 +1,61 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { favoriteService } from '../services/favoriteService';
+import { useAuth } from '../contexts/AuthContext';
 
 export const useCafeFilter = (cafesList = [], locationsList = []) => {
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('All');
   const [ratingFilter, setRatingFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('All');
   const [amenitiesFilter, setAmenitiesFilter] = useState([]);
   const [favoritesFilter, setFavoritesFilter] = useState(false);
-  const [favoritesList, setFavoritesList] = useState(() => {
-    const saved = localStorage.getItem('favoriteCafes');
-    return saved ? JSON.parse(saved) : [];
-  });
+  
+  const [favoriteRecords, setFavoriteRecords] = useState([]); // Lưu các record object (id record + cafeId + userId) từ DB
+  const [favoritesList, setFavoritesList] = useState([]); // Mảng cafeId để thuận tiện UI rendering
   const [sortBy, setSortBy] = useState('ratingDesc');
 
-  const toggleFavorite = (e, cafeId) => {
+  useEffect(() => {
+    if (user) {
+      favoriteService.getByUser(user.id).then(data => {
+        setFavoriteRecords(data);
+        setFavoritesList(data.map(item => item.cafeId));
+      }).catch(err => console.error("Error loading favorite list from backend", err));
+    } else {
+      setFavoriteRecords([]);
+      setFavoritesList([]);
+    }
+  }, [user]);
+
+  const toggleFavorite = async (e, cafeId) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    setFavoritesList(prev => {
-      let newFavs;
-      if (prev.includes(cafeId)) {
-        newFavs = prev.filter(id => id !== cafeId);
+    if (!user) {
+      alert("Vui lòng đăng nhập để lưu quán bạn yêu thích!");
+      return;
+    }
+
+    const isFavorited = favoritesList.includes(cafeId);
+
+    try {
+      if (isFavorited) {
+        const record = favoriteRecords.find(f => f.cafeId === cafeId);
+        if (record) {
+          await favoriteService.remove(record.id);
+          setFavoriteRecords(prev => prev.filter(f => f.id !== record.id));
+          setFavoritesList(prev => prev.filter(id => id !== cafeId));
+        }
       } else {
-        newFavs = [...prev, cafeId];
+        const newRecord = await favoriteService.add(user.id, cafeId);
+        setFavoriteRecords(prev => [...prev, newRecord]);
+        setFavoritesList(prev => [...prev, cafeId]);
       }
-      localStorage.setItem('favoriteCafes', JSON.stringify(newFavs));
-      return newFavs;
-    });
+    } catch (err) {
+      console.error("Lỗi cập nhật backend", err);
+      alert("Đã có lỗi xảy ra! Không thể lưu yêu thích.");
+    }
   };
 
   const toggleAmenity = (amenity) => {
