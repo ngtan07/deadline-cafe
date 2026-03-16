@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
-import { Star, Send, ArrowLeft, MessageCircle, Filter } from 'lucide-react';
+import { Send, ArrowLeft, MessageCircle, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { cafeService } from '../../services/cafeService';
@@ -86,7 +86,7 @@ const CafeReviews = () => {
       setReviews((prev) => [reviewWithUser, ...prev]);
       setComment('');
       setRating(5);
-      setRatingFilter('all'); // Reset filter to show new review
+      setRatingFilter('all');
     } catch (err) {
       console.error('Error submitting review:', err);
       alert('Failed to submit review. Please try again!');

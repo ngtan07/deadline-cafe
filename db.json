@@ -164,13 +164,12 @@
     },
     {
       "id": "d629",
-      "name": "Thanh An Nguyễn",
-      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+      "name": "Thanh An Coffee",
+      "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80",
+      "description": "Quán cà phê mang phong cách tối giản, không gian mở, cực kỳ phù hợp cho những buổi chạy deadline nhóm.",
       "locationId": "loc2",
-      "address": "asdf update",
+      "address": "Đường vành đai Tân Xã, Thạch Thất",
       "rating": 5,
-      "openHours": "07:00 - 23:00",
-      "description": "",
       "amenities": [
         "Wifi 5G",
         "Quiet Zone",
@@ -180,7 +179,8 @@
       "priceRange": {
         "min": 20000,
         "max": 40000
-      }
+      },
+      "openHours": "07:00 - 23:00"
     },
     {
       "id": "5",
@@ -301,33 +301,33 @@
     {
       "id": "2d2d",
       "cafeId": "d629",
-      "userId": "1",
+      "userId": "37f3",
       "rating": 5,
-      "comment": "Rất tốt",
-      "date": "2026-03-16"
+      "comment": "Không gian yên tĩnh, bàn ghế rộng rãi, rất phù hợp để ngồi làm đồ án.",
+      "date": "2026-03-16T08:00:00Z"
     },
     {
       "id": "98fa",
       "cafeId": "d629",
-      "userId": "1",
+      "userId": "cb32",
       "rating": 5,
-      "comment": "Rất tốt",
-      "date": "2026-03-16"
+      "comment": "Menu đa dạng, trà đào cam sả rất vừa miệng. Sẽ rủ nhóm bạn qua chạy deadline tiếp.",
+      "date": "2026-03-16T08:15:00Z"
     },
     {
       "id": "3857",
       "cafeId": "d629",
-      "userId": "1",
+      "userId": "user4",
       "rating": 5,
-      "comment": "Rất tốt",
-      "date": "2026-03-16"
+      "comment": "Quán mới mở nên rất sạch sẽ, nhân viên nhiệt tình hỗ trợ lấy thêm ghế.",
+      "date": "2026-03-16T08:20:00Z"
     },
     {
       "id": "3cf0",
       "cafeId": "d629",
       "userId": "user1",
       "rating": 5,
-      "comment": "Nice",
+      "comment": "Góc làm việc cực chill, view ngắm hoàng hôn đỉnh chóp!",
       "date": "2026-03-16T02:31:13.336Z"
     },
     {
@@ -335,7 +335,7 @@
       "cafeId": "d629",
       "userId": "admin1",
       "rating": 5,
-      "comment": "Đẳng cấp, thượng đẳng, 5 sao",
+      "comment": "Quán được đầu tư bài bản, chất lượng dịch vụ cực tốt. Rất đáng tiền.",
       "date": "2026-03-16T02:43:02.718Z"
     },
     {
@@ -343,8 +343,56 @@
       "cafeId": "d629",
       "userId": "user1",
       "rating": 4,
-      "comment": "hi",
+      "comment": "Wifi cực xịn, đủ ổ cắm điện cho mọi bàn.",
       "date": "2026-03-16T03:05:44.650Z"
+    },
+    {
+      "id": "f0bc",
+      "cafeId": "3",
+      "userId": "37f3",
+      "rating": 5,
+      "comment": "Trà trái cây nhiệt đới ở đây siêu ngon, giải nhiệt cực tốt cho mùa hè.",
+      "date": "2026-03-16T03:21:20.924Z"
+    },
+    {
+      "id": "f2f7",
+      "cafeId": "3",
+      "userId": "cb32",
+      "rating": 5,
+      "comment": "Không gian sân vườn mát mẻ, nhiều cây xanh, ngồi ngoài trời rất thoáng.",
+      "date": "2026-03-16T03:21:41.941Z"
+    },
+    {
+      "id": "8ea1",
+      "cafeId": "d629",
+      "userId": "user2",
+      "rating": 5,
+      "comment": "Chỗ để xe siêu rộng, bác bảo vệ thân thiện dắt xe giùm sinh viên luôn.",
+      "date": "2026-03-16T03:23:56.133Z"
+    },
+    {
+      "id": "cd24",
+      "cafeId": "3",
+      "userId": "user4",
+      "rating": 5,
+      "comment": "Nhạc mở vừa phải, playlist Lofi dễ chịu, không bị ồn ào ảnh hưởng việc học.",
+      "date": "2026-03-16T03:24:09.467Z"
+    },
+    {
+      "id": "760e",
+      "cafeId": "1",
+      "userId": "user2",
+      "rating": 5,
+      "comment": "Luôn là điểm đến ưu tiên số 1 của mình mỗi đợt bảo vệ đồ án cuối kỳ.",
+      "date": "2026-03-16T03:24:21.343Z"
+    },
+    {
+      "id": "ad6a",
+      "cafeId": "3",
+      "userId": "admin2",
+      "rating": 5,
+      "comment": "Mức giá quá đỗi hợp lý so với không gian và dịch vụ nhận được.",
+      "date": "2026-03-16T03:29:40.177Z"
     }
   ],
   "favorites": [
@@ -377,6 +425,11 @@
       "id": "b4a0",
       "userId": "cb32",
       "cafeId": "4"
+    },
+    {
+      "id": "91f2",
+      "userId": "user2",
+      "cafeId": "3"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -12,10 +12,13 @@ export const reviewService = {
      * json-server v1.x không hỗ trợ _expand, nên tự join thủ công.
      */
     getByCafeExpandUser: async (cafeId) => {
-        const response = await axiosInstance.get(`/reviews?cafeId=${cafeId}`);
-        const reviews = response.data;
+        // Fetch all reviews and filter manually because json-server v1.x 
+        // has issues with numeric vs string IDs in query parameters.
+        const response = await axiosInstance.get('/reviews');
+        const allReviews = response.data;
+        const reviews = allReviews.filter(r => String(r.cafeId) === String(cafeId));
 
-        // Fetch all users once, then map by id (hiệu quả hơn N requests)
+        // Fetch all users once, then map by id
         const usersRes = await axiosInstance.get('/users');
         const usersMap = {};
         usersRes.data.forEach(u => { usersMap[u.id] = u; });

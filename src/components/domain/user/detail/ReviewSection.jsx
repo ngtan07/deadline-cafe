@@ -36,12 +36,24 @@ const ReviewSection = ({ reviews, cafeId }) => {
                 </span>
             </h4>
 
-            {/* Review List (read-only, max 3) */}
             <div className="d-flex flex-column gap-3">
                 {displayedReviews.length === 0 ? (
-                    <p className="text-muted text-center small py-2">
-                        No reviews yet. Log in to be the first!
-                    </p>
+                    <>
+                        <p className="text-muted text-center small py-2">
+                            No reviews yet. Write to be the first!
+                        </p>
+                        <div className="text-center mt-3">
+                            <Button
+                                variant="outline-secondary"
+                                className="rounded-pill px-4"
+                                style={{ fontSize: '0.82rem' }}
+                                onClick={handleViewMore}
+                            >
+                                Write a review
+                            </Button>
+                        </div>
+
+                    </>
                 ) : (
                     displayedReviews.map((review) => (
                         <ReviewItem key={review.id} review={review} />
@@ -49,7 +61,6 @@ const ReviewSection = ({ reviews, cafeId }) => {
                 )}
             </div>
 
-            {/* View More button — opens login modal if not logged in */}
             {reviews.length > 0 && (
                 <div className="text-center mt-3">
                     <Button
@@ -58,7 +69,7 @@ const ReviewSection = ({ reviews, cafeId }) => {
                         style={{ fontSize: '0.82rem' }}
                         onClick={handleViewMore}
                     >
-                        {reviews.length > 3
+                        {reviews.length > 2
                             ? `View all ${reviews.length} reviews`
                             : 'View & write a review'}
                     </Button>
