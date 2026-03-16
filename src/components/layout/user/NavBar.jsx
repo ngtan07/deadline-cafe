@@ -70,15 +70,24 @@ const NavBar = () => {
           </Nav>
           <Nav>
             {user ? (
-              <NavDropdown title={<span className="d-flex align-items-center gap-2"><User size={20} />{user.name}</span>} id="basic-nav-dropdown">
+              <div className="d-flex align-items-center gap-4">
+                <span className="d-flex align-items-center gap-2 fw-medium">
+                  <User size={20} className="text-muted" />
+                  {user.name}
+                </span>
                 {user.role === 'admin' && (
-                  <NavDropdown.Item as={NavLink} to="/admin">Admin Dashboard</NavDropdown.Item>
+                  <Nav.Link as={NavLink} to="/admin" className="text-primary p-0">
+                    Trang quản trị
+                  </Nav.Link>
                 )}
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout} className="text-danger d-flex align-items-center gap-2">
+                <div 
+                  onClick={handleLogout} 
+                  className="text-danger d-flex align-items-center gap-2" 
+                  style={{ cursor: 'pointer', fontWeight: '500' }}
+                >
                   <LogOut size={16} /> Logout
-                </NavDropdown.Item>
-              </NavDropdown>
+                </div>
+              </div>
             ) : (
               <Nav.Link as={NavLink} to="/login" className="d-flex align-items-center gap-2">
                 <User size={20} />

@@ -24,7 +24,7 @@ const Login = () => {
     try {
       const user = await authService.login(email, password);
       login(user);
-      if (user.role === 'admin' && from === '/') {
+      if (user.role === 'admin') {
           navigate('/admin');
       } else {
           navigate(from, { replace: true });
