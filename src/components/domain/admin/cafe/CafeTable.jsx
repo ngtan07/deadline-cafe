@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Card, Table, Pagination } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 import { Star, Edit, Trash2, MapPin, Clock } from 'lucide-react';
+import PaginationComponent from '../../../common/Pagination';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -10,7 +11,7 @@ const formatPrice = (price) =>
 const CafeTable = ({ cafesList, locationsList, onEdit, onDelete }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(cafesList.length / ITEMS_PER_PAGE);
+
   const paginated = cafesList.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   return (
@@ -145,33 +146,12 @@ const CafeTable = ({ cafesList, locationsList, onEdit, onDelete }) => {
       </Card>
 
       {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="d-flex justify-content-between align-items-center mt-3 px-1">
-          <span className="text-muted small">
-            Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, cafesList.length)} of {cafesList.length} cafes
-          </span>
-          <Pagination className="mb-0" size="sm">
-            <Pagination.Prev
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-            />
-            {Array.from({ length: totalPages }, (_, i) => (
-              <Pagination.Item
-                key={i + 1}
-                active={currentPage === i + 1}
-                onClick={() => setCurrentPage(i + 1)}
-                style={currentPage === i + 1 ? { '--bs-pagination-active-bg': '#8B3A2A', '--bs-pagination-active-border-color': '#8B3A2A' } : {}}
-              >
-                {i + 1}
-              </Pagination.Item>
-            ))}
-            <Pagination.Next
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-            />
-          </Pagination>
-        </div>
-      )}
+      <PaginationComponent
+        currentPage={currentPage}
+        ITEMS_PER_PAGE={ITEMS_PER_PAGE}
+        itemList={cafesList}
+        setCurrentPage={setCurrentPage}
+      />
 
       <style>{`
         .no-lift:hover { transform: none !important; box-shadow: 0 10px 30px rgba(60,42,33,0.05) !important; }

@@ -181,16 +181,122 @@
         "min": 20000,
         "max": 40000
       }
+    },
+    {
+      "id": "5",
+      "name": "Katinat - Ngã ba Thạch Hòa",
+      "image": "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80",
+      "description": "Giao diện hiện đại, tone màu xanh cổ vịt đặc trưng. Đồ uống ngon nhưng cuối tuần hơi ồn.",
+      "locationId": "loc1",
+      "address": "Ngã ba Hòa Lạc, Thạch Hòa",
+      "rating": 4.1,
+      "amenities": [
+        "Wifi 5G",
+        "Air Con",
+        "Smoking Area"
+      ],
+      "priceRange": {
+        "min": 45000,
+        "max": 75000
+      },
+      "openHours": "07:30 - 23:00"
+    },
+    {
+      "id": "6",
+      "name": "Mây Lang Thang - Bình Yên",
+      "image": "https://images.unsplash.com/photo-1501339817309-1d41e50156af?auto=format&fit=crop&w=800&q=80",
+      "description": "Không gian mở mang phong cách acoustic nhẹ nhàng. Rất hợp để tâm sự hoặc làm việc cần cảm hứng sáng tạo.",
+      "locationId": "loc3",
+      "address": "Trục chính Bình Yên, Thạch Thất",
+      "rating": 4.6,
+      "amenities": [
+        "Acoustic Music",
+        "Garden",
+        "Pet Friendly"
+      ],
+      "priceRange": {
+        "min": 30000,
+        "max": 60000
+      },
+      "openHours": "08:00 - 22:30"
+    },
+    {
+      "id": "7",
+      "name": "Deadline & Boardgame",
+      "image": "https://images.unsplash.com/photo-1510552776732-03eac0952b7b?auto=format&fit=crop&w=800&q=80",
+      "description": "Nơi lý tưởng cho các buổi họp nhóm SE/IA. Code mệt có thể mượn boardgame chơi xả stress.",
+      "locationId": "loc2",
+      "address": "Khu tái định cư Tân Xã",
+      "rating": 4.7,
+      "amenities": [
+        "Group Tables",
+        "Boardgames",
+        "Power Plugs",
+        "Air Con"
+      ],
+      "priceRange": {
+        "min": 20000,
+        "max": 50000
+      },
+      "openHours": "08:00 - 24:00"
     }
   ],
   "reviews": [
     {
       "id": "1",
       "cafeId": "1",
-      "userId": null,
+      "userId": "user2",
       "rating": 5,
       "comment": "Mạng ở đây mạnh kinh khủng, kéo code vèo vèo!",
       "date": "2026-03-13T10:30:00Z"
+    },
+    {
+      "id": "2a36",
+      "cafeId": "2",
+      "userId": "user1",
+      "rating": 5,
+      "comment": "Tuyệt vời, giá sinh viên mà điều hòa mát lạnh.",
+      "date": "2026-03-15T14:20:00Z"
+    },
+    {
+      "id": "3b47",
+      "cafeId": "1",
+      "userId": "user3",
+      "rating": 4.5,
+      "comment": "View hồ Tân Xã buổi chiều hoàng hôn siêu đỉnh, mình hay ra đây ngồi fix bug.",
+      "date": "2026-03-10T16:00:00Z"
+    },
+    {
+      "id": "4c58",
+      "cafeId": "3",
+      "userId": "user4",
+      "rating": 5,
+      "comment": "Lekima đúng chất hidden gem ở Hola. Yên tĩnh tuyệt đối, cafe muối siêu ngon.",
+      "date": "2026-03-12T09:15:00Z"
+    },
+    {
+      "id": "5d69",
+      "cafeId": "7",
+      "userId": "user2",
+      "rating": 4,
+      "comment": "Bàn to rộng rất hợp cho nhóm 4-5 người làm project cuối kỳ.",
+      "date": "2026-03-14T20:45:00Z"
+    },
+    {
+      "id": "6e70",
+      "cafeId": "5",
+      "userId": "user3",
+      "rating": 3.5,
+      "comment": "Đồ uống hơi đắt so với mặt bằng chung sinh viên, quán đông nên khá ồn.",
+      "date": "2026-03-01T19:30:00Z"
+    },
+    {
+      "id": "7f81",
+      "cafeId": "6",
+      "userId": "user1",
+      "rating": 4.5,
+      "comment": "Thích nhất khoản mang cún vào quán được. Đồ uống ổn.",
+      "date": "2026-03-05T15:10:00Z"
     },
     {
       "id": "2d2d",
@@ -220,7 +326,27 @@
   "favorites": [
     {
       "id": "fav1",
-      "userId": null,
+      "userId": "user2",
+      "cafeId": "1"
+    },
+    {
+      "id": "fav2",
+      "userId": "user2",
+      "cafeId": "7"
+    },
+    {
+      "id": "fav3",
+      "userId": "user1",
+      "cafeId": "3"
+    },
+    {
+      "id": "fav4",
+      "userId": "user4",
+      "cafeId": "6"
+    },
+    {
+      "id": "fav5",
+      "userId": "user3",
       "cafeId": "1"
     }
   ],

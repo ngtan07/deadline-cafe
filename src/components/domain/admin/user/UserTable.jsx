@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { Card, Table, Pagination } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 import { Eye, Ban, Mail, Shield, User } from 'lucide-react';
+import PaginationComponent from '../../../common/Pagination';
 
 const ITEMS_PER_PAGE = 5;
 
 const UserTable = ({ usersList, onEdit, onDelete }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Safely calculate pages and slice
-  const usersLength = usersList?.length || 0;
-  const totalPages = Math.ceil(usersLength / ITEMS_PER_PAGE);
   const paginated = (usersList || []).slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   return (
@@ -122,7 +119,7 @@ const UserTable = ({ usersList, onEdit, onDelete }) => {
                 </tr>
               ))}
 
-              {usersLength === 0 && (
+              {usersList.length === 0 && (
                 <tr>
                   <td colSpan="5" className="text-center py-5 text-muted">
                     <div className="py-3">
@@ -138,33 +135,12 @@ const UserTable = ({ usersList, onEdit, onDelete }) => {
       </Card>
 
       {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="d-flex justify-content-between align-items-center mt-3 px-1">
-          <span className="text-muted small">
-            Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, usersLength)} of {usersLength} users
-          </span>
-          <Pagination className="mb-0" size="sm">
-            <Pagination.Prev
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-            />
-            {Array.from({ length: totalPages }, (_, i) => (
-              <Pagination.Item
-                key={i + 1}
-                active={currentPage === i + 1}
-                onClick={() => setCurrentPage(i + 1)}
-                style={currentPage === i + 1 ? { '--bs-pagination-active-bg': '#8B3A2A', '--bs-pagination-active-border-color': '#8B3A2A' } : {}}
-              >
-                {i + 1}
-              </Pagination.Item>
-            ))}
-            <Pagination.Next
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-            />
-          </Pagination>
-        </div>
-      )}
+      <PaginationComponent
+        currentPage={currentPage}
+        ITEMS_PER_PAGE={ITEMS_PER_PAGE}
+        itemList={usersList}
+        setCurrentPage={setCurrentPage}
+      />
 
       <style>{`
         .no-lift:hover { transform: none !important; box-shadow: 0 10px 30px rgba(60,42,33,0.05) !important; }
