@@ -1,9 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { favoriteService } from '../services/favoriteService';
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const useCafeFilter = (cafesList = [], locationsList = []) => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [locationFilter, setLocationFilter] = useState('All');
   const [ratingFilter, setRatingFilter] = useState('');
@@ -33,7 +35,7 @@ export const useCafeFilter = (cafesList = [], locationsList = []) => {
       e.stopPropagation();
     }
     if (!user) {
-      alert("Vui lòng đăng nhập để lưu quán bạn yêu thích!");
+      navigate('/login');
       return;
     }
 
