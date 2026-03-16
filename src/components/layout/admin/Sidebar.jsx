@@ -1,6 +1,7 @@
 import { Coffee, LayoutDashboard, LogOut, Settings, Users } from 'lucide-react';
 import { Nav } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const NAV_ITEMS = [
     { label: "Dashboard", icon: LayoutDashboard, href: "/admin", end: true },
@@ -9,6 +10,15 @@ const NAV_ITEMS = [
 ];
 
 const Sidebar = () => {
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        logout();
+        navigate('/login');
+    };
+
     return (
         <div
             className="d-flex flex-column bg-white border-end shadow-sm p-3"
@@ -64,6 +74,7 @@ const Sidebar = () => {
 
                     <Link
                         to="/"
+                        onClick={handleLogout}
                         className="d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-decoration-none text-danger transition-all bg-danger-hover"
                         style={{ outline: "none" }}
                     >

@@ -2,20 +2,37 @@ import { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { Mail, Lock, LogIn, Coffee } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { authService } from '../services/authService';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
+  
+  const from = location.state?.from?.pathname || '/';
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Simulate login for now
-    if (email === 'admin@deadlinecafe.vn' && password === 'admin') {
-      navigate('/admin');
-    } else {
-      navigate('/');
+    setError('');
+    setLoading(true);
+    try {
+      const user = await authService.login(email, password);
+      login(user);
+      if (user.role === 'admin' && from === '/') {
+          navigate('/admin');
+      } else {
+          navigate(from, { replace: true });
+      }
+    } catch (err) {
+      setError(err.message || 'Đăng nhập thất bại');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,6 +63,7 @@ const Login = () => {
                 <p className="text-muted">Đăng nhập để tìm góc chạy deadline tiếp theo của bạn.</p>
               </div>
 
+              {error && <div className="alert alert-danger">{error}</div>}
               <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-4 position-relative">
                   <Form.Label className="fw-semibold small text-muted text-uppercase">Email</Form.Label>

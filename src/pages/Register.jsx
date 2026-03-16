@@ -3,23 +3,34 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { Mail, Lock, UserPlus, Coffee, User } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
+import { authService } from '../services/authService';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Mật khẩu xác nhận không khớp!");
+      setError("Mật khẩu xác nhận không khớp!");
       return;
     }
-    // Simulate register
-    alert("Đăng ký thành công! Đang chuyển hướng đến trang Đăng nhập...");
-    navigate('/login');
+    setError('');
+    setLoading(true);
+    try {
+      await authService.register({ name, email, password });
+      alert("Đăng ký thành công! Đang chuyển hướng đến trang Đăng nhập...");
+      navigate('/login');
+    } catch (err) {
+      setError(err.message || 'Đăng ký thất bại');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,6 +60,7 @@ const Register = () => {
                 <p className="text-muted">Cùng tham gia cộng đồng chạy deadline năng suất nhất.</p>
               </div>
 
+              {error && <div className="alert alert-danger">{error}</div>}
               <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3 position-relative">
                   <Form.Label className="fw-semibold small text-muted text-uppercase">Họ và tên</Form.Label>

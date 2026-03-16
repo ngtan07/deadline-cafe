@@ -2,13 +2,18 @@ import axiosInstance from '../config/axios.config';
 
 export const authService = {
     login: async (email, password) => {
-        // Query users by email and password
-        const response = await axiosInstance.get(`/users?email=${email}&password=${password}`);
+        // Query users by email first to avoid json-server beta multi-param query issues
+        const response = await axiosInstance.get(`/users?email=${encodeURIComponent(email)}`);
         const users = response.data;
         if (users && users.length > 0) {
-            return users[0]; // Return the matched user
+            const user = users.find(u => u.password === password);
+            if (user) {
+                return user; // Return the matched user
+            } else {
+                throw new Error("Mật khẩu không chính xác.");
+            }
         } else {
-            throw new Error("Email hoặc mật khẩu không chính xác.");
+            throw new Error("Email không tồn tại.");
         }
     },
     

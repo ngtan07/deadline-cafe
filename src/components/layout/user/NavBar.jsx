@@ -1,7 +1,8 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import { Coffee, User } from 'lucide-react';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Coffee, User, LogOut } from 'lucide-react';
 import styled from 'styled-components';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const StyledNavbar = styled(Navbar)`
   background: var(--glass-bg);
@@ -46,6 +47,14 @@ const StyledNavbar = styled(Navbar)`
 `;
 
 const NavBar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <StyledNavbar expand="lg" sticky="top" className="py-3">
       <Container>
@@ -60,10 +69,22 @@ const NavBar = () => {
             <Nav.Link as={NavLink} to="/explore">Explore</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={NavLink} to="/login" className="d-flex align-items-center gap-2">
-              <User size={20} />
-              Login
-            </Nav.Link>
+            {user ? (
+              <NavDropdown title={<span className="d-flex align-items-center gap-2"><User size={20} />{user.name}</span>} id="basic-nav-dropdown">
+                {user.role === 'admin' && (
+                  <NavDropdown.Item as={NavLink} to="/admin">Admin Dashboard</NavDropdown.Item>
+                )}
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={handleLogout} className="text-danger d-flex align-items-center gap-2">
+                  <LogOut size={16} /> Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Nav.Link as={NavLink} to="/login" className="d-flex align-items-center gap-2">
+                <User size={20} />
+                Login
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

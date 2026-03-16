@@ -47,6 +47,14 @@
       "email": "mod@dehofee.com",
       "role": "admin",
       "password": "123456"
+    },
+    {
+      "id": "37f3",
+      "name": "Lê Minh Phương",
+      "email": "abcd1234@gmail.com",
+      "password": "abc123@",
+      "role": "user",
+      "avatar": "https://i.pravatar.cc/150?u=lêminhphương"
     }
   ],
   "locations": [
