@@ -1,17 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
 import Layout from '../components/layout/user/Layout';
-import CafeReviews from '../pages/user/CafeReviews'
-import CafeDetail from '../pages/user/CafeDetail'
 
+// UserRoutes: các trang yêu cầu đăng nhập
+// /cafe/:id/reviews đã được chuyển sang PublicRoutes (ai cũng xem được)
 const UserRoutes = () => {
     return (
         <Routes>
             <Route element={<Layout />}>
-                <Route path="cafe/:id/reviews" element={<CafeReviews />} />
-                <Route path="cafe/:id" element={<CafeDetail />} />
+                {/* Thêm các route protected khác tại đây */}
             </Route>
-
         </Routes>
     );
 };

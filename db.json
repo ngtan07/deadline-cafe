@@ -321,6 +321,30 @@
       "rating": 5,
       "comment": "Rất tốt",
       "date": "2026-03-16"
+    },
+    {
+      "id": "3cf0",
+      "cafeId": "d629",
+      "userId": "user1",
+      "rating": 5,
+      "comment": "Nice",
+      "date": "2026-03-16T02:31:13.336Z"
+    },
+    {
+      "id": "87e9",
+      "cafeId": "d629",
+      "userId": "admin1",
+      "rating": 5,
+      "comment": "Đẳng cấp, thượng đẳng, 5 sao",
+      "date": "2026-03-16T02:43:02.718Z"
+    },
+    {
+      "id": "1cb0",
+      "cafeId": "d629",
+      "userId": "user1",
+      "rating": 4,
+      "comment": "hi",
+      "date": "2026-03-16T03:05:44.650Z"
     }
   ],
   "favorites": [

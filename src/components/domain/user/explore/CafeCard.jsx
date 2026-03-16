@@ -4,7 +4,7 @@ import { Star, MapPin, Heart } from 'lucide-react';
 
 const CafeCard = ({ cafe, toggleFavorite, favoritesList, getLocationName, formatPrice, getIcon }) => {
     return (
-        <Link to={`/user/cafe/${cafe.id}`} className="text-decoration-none text-dark">
+        <Link to={`/cafe/${cafe.id}`} className="text-decoration-none text-dark">
             <div className="modern-card h-100 d-flex flex-column bg-white border border-light shadow-sm rounded-4 overflow-hidden">
                 <div className="position-relative" style={{ overflow: 'hidden', height: '220px' }}>
                     <motion.img
