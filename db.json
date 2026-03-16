@@ -55,6 +55,14 @@
       "password": "abc123@",
       "role": "user",
       "avatar": "https://i.pravatar.cc/150?u=lêminhphương"
+    },
+    {
+      "id": "cb32",
+      "name": "ABC",
+      "email": "atus@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "avatar": "https://i.pravatar.cc/150?u=abc"
     }
   ],
   "locations": [
@@ -183,6 +191,30 @@
       "rating": 5,
       "comment": "Mạng ở đây mạnh kinh khủng, kéo code vèo vèo!",
       "date": "2026-03-13T10:30:00Z"
+    },
+    {
+      "id": "2d2d",
+      "cafeId": "d629",
+      "userId": "1",
+      "rating": 5,
+      "comment": "Rất tốt",
+      "date": "2026-03-16"
+    },
+    {
+      "id": "98fa",
+      "cafeId": "d629",
+      "userId": "1",
+      "rating": 5,
+      "comment": "Rất tốt",
+      "date": "2026-03-16"
+    },
+    {
+      "id": "3857",
+      "cafeId": "d629",
+      "userId": "1",
+      "rating": 5,
+      "comment": "Rất tốt",
+      "date": "2026-03-16"
     }
   ],
   "favorites": [

@@ -24,7 +24,6 @@ const Register = () => {
     setLoading(true);
     try {
       await authService.register({ name, email, password });
-      alert("Đăng ký thành công! Đang chuyển hướng đến trang Đăng nhập...");
       navigate('/login');
     } catch (err) {
       setError(err.message || 'Đăng ký thất bại');
