@@ -5,42 +5,64 @@
       "name": "Jane Nguyen",
       "avatar": "https://i.pravatar.cc/150?u=jane",
       "email": "jane.nguyen@example.com",
-      "role": "user"
+      "role": "user",
+      "password": "123456"
     },
     {
       "id": "user2",
       "name": "Mike Duong",
       "avatar": "https://i.pravatar.cc/150?u=mike",
       "email": "mike.duong@fpt.edu.vn",
-      "role": "user"
+      "role": "user",
+      "password": "123456"
     },
     {
       "id": "admin1",
       "name": "Super Admin",
       "avatar": "https://i.pravatar.cc/150?u=admin_super",
       "email": "admin@dehofee.com",
-      "role": "admin"
+      "role": "admin",
+      "password": "123456"
     },
     {
       "id": "user3",
       "name": "Alex Tran",
       "avatar": "https://i.pravatar.cc/150?u=alex",
       "email": "alextran.dev@gmail.com",
-      "role": "user"
+      "role": "user",
+      "password": "123456"
     },
     {
       "id": "user4",
       "name": "Thao Le",
       "avatar": "https://i.pravatar.cc/150?u=thao",
       "email": "thaole1999@yahoo.com",
-      "role": "user"
+      "role": "user",
+      "password": "123456"
     },
     {
       "id": "admin2",
       "name": "System Moderator",
       "avatar": "https://i.pravatar.cc/150?u=mod123",
       "email": "mod@dehofee.com",
-      "role": "admin"
+      "role": "admin",
+      "password": "123456"
+    },
+    {
+      "id": "37f3",
+      "name": "Lê Minh Phương",
+      "email": "abcd1234@gmail.com",
+      "password": "abc123@",
+      "role": "user",
+      "avatar": "https://i.pravatar.cc/150?u=lêminhphương"
+    },
+    {
+      "id": "cb32",
+      "name": "ABC",
+      "email": "atus@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "avatar": "https://i.pravatar.cc/150?u=abc"
     }
   ],
   "locations": [
@@ -275,6 +297,30 @@
       "rating": 4.5,
       "comment": "Thích nhất khoản mang cún vào quán được. Đồ uống ổn.",
       "date": "2026-03-05T15:10:00Z"
+    },
+    {
+      "id": "2d2d",
+      "cafeId": "d629",
+      "userId": "1",
+      "rating": 5,
+      "comment": "Rất tốt",
+      "date": "2026-03-16"
+    },
+    {
+      "id": "98fa",
+      "cafeId": "d629",
+      "userId": "1",
+      "rating": 5,
+      "comment": "Rất tốt",
+      "date": "2026-03-16"
+    },
+    {
+      "id": "3857",
+      "cafeId": "d629",
+      "userId": "1",
+      "rating": 5,
+      "comment": "Rất tốt",
+      "date": "2026-03-16"
     }
   ],
   "favorites": [
