@@ -348,6 +348,11 @@
       "id": "fav5",
       "userId": "user3",
       "cafeId": "1"
+    },
+    {
+      "id": "b4a0",
+      "userId": "cb32",
+      "cafeId": "4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
