@@ -17,13 +17,21 @@ export const useAdminDashboardData = () => {
     const fetchAll = async () => {
       setLoading(true);
       try {
-        const [cafes, reviews, users, favorites, locations] = await Promise.all([
+        const [cafesRaw, reviews, users, favorites, locations] = await Promise.all([
           cafeService.getAll(),
           reviewService.getAll(),
           userService.getAll(),
           favoriteService.getAll(),
           locationService.getAll(),
         ]);
+
+        // Enrich rating từ reviews thực tế
+        const cafes = cafesRaw.map(cafe => {
+          const cafeReviews = reviews.filter(r => String(r.cafeId) === String(cafe.id));
+          const computedRating = reviewService.computeAverageRating(cafeReviews);
+          return { ...cafe, rating: computedRating ?? cafe.rating };
+        });
+
         setCafesList(cafes);
         setReviewsList(reviews);
         setUsersList(users);

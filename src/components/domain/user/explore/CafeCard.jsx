@@ -35,7 +35,7 @@ const CafeCard = ({ cafe, toggleFavorite, favoritesList, getLocationName, format
                         style={{ top: '12px', right: '12px', fontSize: '14px', fontWeight: '600' }}
                     >
                         <Star size={16} color="#F59E0B" fill="#F59E0B" />
-                        {cafe.rating.toFixed(1)}
+                        {cafe.rating != null ? Number(cafe.rating).toFixed(1) : '—'}
                     </div>
                 </div>
 

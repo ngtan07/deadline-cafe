@@ -239,6 +239,26 @@
         "max": 50000
       },
       "openHours": "08:00 - 24:00"
+    },
+    {
+      "id": "3bb3",
+      "name": "ABC XYZ",
+      "image": "https://media-cdn-v2.laodong.vn/storage/newsportal/2024/3/2/1310384/Ca-Phe-Tphcm-9.jpeg",
+      "locationId": "loc1",
+      "address": "Bùi Xá - Yên Bắc - Duy Tiên - Hà Nam",
+      "rating": 5,
+      "openHours": "07:00 - 23:00",
+      "description": "Quán cà phê ngon nhất",
+      "amenities": [
+        "Wifi 5G",
+        "Quiet Zone",
+        "Power Plugs",
+        "Air Con"
+      ],
+      "priceRange": {
+        "min": 250000,
+        "max": 1000000
+      }
     }
   ],
   "reviews": [
@@ -393,6 +413,70 @@
       "rating": 5,
       "comment": "Mức giá quá đỗi hợp lý so với không gian và dịch vụ nhận được.",
       "date": "2026-03-16T03:29:40.177Z"
+    },
+    {
+      "id": "b734",
+      "cafeId": "d629",
+      "userId": "cb32",
+      "rating": 2,
+      "comment": "Không oke lắm nhé",
+      "date": "2026-03-16T03:55:25.933Z"
+    },
+    {
+      "id": "8a56",
+      "cafeId": "d629",
+      "userId": "cb32",
+      "rating": 1,
+      "comment": "gjhfjgb",
+      "date": "2026-03-16T03:56:03.964Z"
+    },
+    {
+      "id": "8e15",
+      "cafeId": "d629",
+      "userId": "cb32",
+      "rating": 1,
+      "comment": "gsgdgds",
+      "date": "2026-03-16T03:56:09.804Z"
+    },
+    {
+      "id": "db04",
+      "cafeId": "d629",
+      "userId": "cb32",
+      "rating": 1,
+      "comment": "gsdgsdgdsbsb",
+      "date": "2026-03-16T03:56:14.123Z"
+    },
+    {
+      "id": "f996",
+      "cafeId": "d629",
+      "userId": "admin2",
+      "rating": 5,
+      "comment": "jfgjgjgjrt",
+      "date": "2026-03-16T06:28:14.210Z"
+    },
+    {
+      "id": "3380",
+      "cafeId": "3bb3",
+      "userId": "cb32",
+      "rating": 5,
+      "comment": "rất ngon",
+      "date": "2026-03-18T12:10:00.458Z"
+    },
+    {
+      "id": "7742",
+      "cafeId": "d629",
+      "userId": "cb32",
+      "rating": 3,
+      "comment": "không tốt nhỉ",
+      "date": "2026-03-18T19:50:09.169Z"
+    },
+    {
+      "id": "1a7c",
+      "cafeId": "2",
+      "userId": "cb32",
+      "rating": 1,
+      "comment": "không tốt",
+      "date": "2026-03-18T19:58:38.924Z"
     }
   ],
   "favorites": [
@@ -429,6 +513,16 @@
     {
       "id": "91f2",
       "userId": "user2",
+      "cafeId": "3"
+    },
+    {
+      "id": "8435",
+      "userId": "cb32",
+      "cafeId": "d629"
+    },
+    {
+      "id": "4093",
+      "userId": "cb32",
       "cafeId": "3"
     }
   ],

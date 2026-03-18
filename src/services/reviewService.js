@@ -8,6 +8,16 @@ export const reviewService = {
     },
 
     /**
+     * Tính trung bình rating từ mảng reviews.
+     * Trả về số (1 chữ số thập phân) hoặc null nếu không có review.
+     */
+    computeAverageRating: (reviews) => {
+        if (!reviews || reviews.length === 0) return null;
+        const sum = reviews.reduce((acc, r) => acc + Number(r.rating), 0);
+        return Math.round((sum / reviews.length) * 10) / 10;
+    },
+
+    /**
      * Lấy reviews theo cafeId, sau đó enrich từng review với thông tin user.
      * json-server v1.x không hỗ trợ _expand, nên tự join thủ công.
      */

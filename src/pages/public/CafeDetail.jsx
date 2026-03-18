@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Star, MapPin, Clock, DollarSign, Send, Heart } from 'lucide-react';
@@ -29,7 +29,7 @@ const CafeDetail = () => {
       setIsLoading(true);
       try {
         const [cafeData, reviewsData, locationsData] = await Promise.all([
-          cafeService.getById(id),
+          cafeService.getByIdWithRating(id),
           reviewService.getByCafeExpandUser(id),
           locationService.getAll(),
         ]);
@@ -93,7 +93,9 @@ const CafeDetail = () => {
               style={{ bottom: '20px', right: '20px', fontWeight: '700', fontSize: '1.2rem' }}
             >
               <Star size={20} color="#F59E0B" fill="#F59E0B" />
-              {cafe.rating}
+              {reviewService.computeAverageRating(reviews) != null
+                ? reviewService.computeAverageRating(reviews).toFixed(1)
+                : cafe.rating ?? '—'}
             </div>
           </motion.div>
 

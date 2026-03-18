@@ -55,7 +55,7 @@ const Explore = () => {
       setIsLoading(true);
       try {
         const [cafesData, locationsData] = await Promise.all([
-          cafeService.getAll(),
+          cafeService.getAllWithRating(),
           locationService.getAll(),
         ]);
         setCafes(cafesData);
